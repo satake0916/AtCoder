@@ -1,2 +1,2 @@
 # AtCoder
-AtCoderで解いた問題のコード
+AtCoderで解いた問題のコード。
