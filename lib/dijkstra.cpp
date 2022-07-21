@@ -18,18 +18,18 @@ vector<int> dijkstra(int start, vector<vector<array<int, 2> > > edges){
 	vector<int> d(edges.size(), INF);
 
     d[start] = 0;
-    q.push(make_pair(start, 0));
+    q.push(make_pair(0, start));
 
     while(!q.empty()){
 		auto p = q.top();
         q.pop();
-		if(d[p.first] < p.second) continue;
-		for(auto edge: edges[p.first]){
+		if(d[p.second] < p.first) continue;
+		for(auto edge: edges[p.second]){
 			int next = edge[0];
-			int nextd = d[p.first] + edge[1];
+			int nextd = d[p.second] + edge[1];
 			if(nextd < d[next]){
 				d[next] = nextd;
-				q.push(make_pair(next, d[next]));
+				q.push(make_pair(d[next], next));
 			}
 		}
 	}
