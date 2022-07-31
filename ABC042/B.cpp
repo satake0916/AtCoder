@@ -14,4 +14,18 @@ using ll = long long;
 #endif
 
 int main(){
+	int n,l;
+	cin >> n >> l;
+	vector<string> v;
+	for(int i = 0; i < n; i++){
+		string s;
+		cin >> s;
+		v.pb(s);
+	}
+	sort(v.begin(), v.end());
+	string ans = "";
+	for(int i = 0; i < n; i++){
+		ans += v[i];
+	}
+	cout << ans << endl;
 }

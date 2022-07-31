@@ -13,5 +13,9 @@ using ll = long long;
 #define dbg(x) true
 #endif
 
-int main(){
+int main() {
+    int a, b, c;
+	cin >> a >> b >> c;
+    bool ans = (a == 5 && b == 7 && c == 5) || (a == 7 && b == 5 && c == 5) || (a == 5 && b == 5 && c == 7);
+	cout << (ans ? "YES" : "NO") << endl;
 }
