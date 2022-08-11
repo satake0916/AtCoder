@@ -21,7 +21,6 @@
 #include<numeric>
 #include<array>
 #include<chrono>
-
 using namespace std;
 using ll = long long;
 
@@ -30,8 +29,20 @@ using ll = long long;
 #define fi first
 #define se second
 
-#define max(p,q)((p)>(q)?(p):(q))
-#define min(p,q)((p)<(q)?(p):(q))
+const int MAX = 3001;
+int flag[MAX][MAX];
+ll dp[MAX][MAX];
+ll a[MAX];
+int n;
 
+ll f(int l, int r){
+	if(flag[l][r]) return dp[l][r];
+	flag[l][r] = 1;
+	if(l == r) return dp[l][r] = a[l];
+	return dp[l][r] = max(a[l] - f(l+1, r), a[r] - f(l, r-1));
+}
 int main(){
+	cin >> n;
+	for(int i = 0; i < n; i++) cin >> a[i];
+	cout << f(0, n-1) << endl;
 }

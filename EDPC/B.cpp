@@ -21,7 +21,6 @@
 #include<numeric>
 #include<array>
 #include<chrono>
-
 using namespace std;
 using ll = long long;
 
@@ -30,8 +29,17 @@ using ll = long long;
 #define fi first
 #define se second
 
-#define max(p,q)((p)>(q)?(p):(q))
-#define min(p,q)((p)<(q)?(p):(q))
-
 int main(){
+	int n,k;
+	cin >> n >> k;
+	vector<int> h(n), dp(n, numeric_limits<int>::max());
+	for(auto &x: h) cin >> x;
+	dp[0] = 0;
+	for(int i = 0; i < n; i++){
+		for(int j = 1; j <= k; j++){
+			if(i+j < n) dp[i+j] = min(dp[i+j], dp[i] + abs(h[i] - h[i+j]));
+		}
+	}
+
+	cout << dp[n-1] << endl;
 }

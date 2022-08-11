@@ -21,7 +21,6 @@
 #include<numeric>
 #include<array>
 #include<chrono>
-
 using namespace std;
 using ll = long long;
 
@@ -30,8 +29,34 @@ using ll = long long;
 #define fi first
 #define se second
 
-#define max(p,q)((p)>(q)?(p):(q))
-#define min(p,q)((p)<(q)?(p):(q))
+vector<int> flag, dp;
+vector<vector<int>> g;
+
+int f(int x){
+	if(flag[x]) return dp[x];
+	flag[x] = 1;
+	int ret = 0;
+	for(int nxt: g[x]){
+		ret = max(ret, f(nxt) + 1);
+	}
+	return dp[x] = ret;
+}
 
 int main(){
+	int n,m;
+	cin >> n >> m;
+	flag.resize(n), dp.resize(n), g.resize(n);
+	for(int i = 0; i < m; i++){
+		int x,y;
+		cin >> x >> y;
+		x--, y--;
+		g[x].pb(y);
+	}
+
+	int ans = 0;
+	for(int i = 0; i < n; i++){
+		ans = max(ans, f(i));
+	}
+
+	cout << ans << endl;
 }
