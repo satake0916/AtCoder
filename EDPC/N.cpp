@@ -30,5 +30,32 @@ using ll = long long;
 #define fi first
 #define se second
 
+const int MAX = 400;
+int n;
+ll a[MAX], sum[MAX+1];
+ll dp[MAX][MAX];
+int flag[MAX][MAX];
+
+ll f(int l, int r){
+	if(flag[l][r]) return dp[l][r];
+	flag[l][r] = 1;
+	if(l == r) return dp[l][r] = a[l];
+	ll ret = numeric_limits<ll>::max();
+	for(int k = l; k < r; k++){
+		ret = min(ret, f(l, k) + f(k+1, r) + sum[r+1] - sum[l]);
+	}
+	return dp[l][r] = ret;
+}
+
+
 int main(){
+	int n;
+	cin >> n;
+	int a[n];
+	for(auto &x: a) cin >> x;
+	for(int i = 0; i < n; i++){
+		sum[i+1] = sum[i] + a[i];
+	}
+
+	cout << f(0, n-1) << endl;
 }
