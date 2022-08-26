@@ -2,3 +2,5 @@ main.cpp
 *.swp
 *.exe
 *.out
+[A-Z].cpp
+*.sh
