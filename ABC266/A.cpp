@@ -20,4 +20,7 @@ template <class Tp> void print(string_view name, vector<Tp> arg) {
 #endif
 
 int main(){
+	string s;
+	cin >> s;
+	cout << s[s.size() / 2] << endl;
 }

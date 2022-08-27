@@ -20,4 +20,11 @@ template <class Tp> void print(string_view name, vector<Tp> arg) {
 #endif
 
 int main(){
+	const int t = 998244353;
+	ll n;
+	cin >> n;
+	ll a = n / t;
+	ll b = n - a * t;
+	if(b < 0) b += t;
+	cout << b << endl;
 }
