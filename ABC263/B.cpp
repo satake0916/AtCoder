@@ -22,4 +22,21 @@ template <class Tp> void print(string_view name, vector<Tp> arg) {
 int main(){
 	ios::sync_with_stdio(false);
 	cin.tie(nullptr);
+	int n;
+	cin >> n;
+	vector<int> p(n);
+	p[0] = -1;
+	for(int i = 1; i < n; i++){
+		cin >> p[i];
+		p[i]--;
+	}
+
+	int ans = 0;
+	int now = p[n-1];
+	while(now >= 0){
+		ans++;
+		now = p[now];
+	}
+
+	cout << ans << endl;
 }
