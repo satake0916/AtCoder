@@ -1,4 +1,7 @@
+// 参考：https://naskya.net/post/0002/
+
 /* last update: 2022-08-03 */
+
 
 #ifndef DEBUG_PRINT_HPP
 #define DEBUG_PRINT_HPP
